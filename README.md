@@ -1,0 +1,2 @@
+# zcoin
+zcoin
