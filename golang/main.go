@@ -99,7 +99,7 @@ func handleWriteBlock(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "application/json")
     var m Message
 
-    w.Write(r.Body)
+    w.Write([]byte(r.Body))
     decoder := json.NewDecoder(r.Body)
     if err := decoder.Decode(&m); err != nil {
         respondWithJSON(w, r, http.StatusBadRequest, r.Body)
