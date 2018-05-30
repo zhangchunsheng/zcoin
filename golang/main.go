@@ -104,7 +104,7 @@ type Message struct {
     BPM int
 }
 
-func handlerWriteBlock(w http.ResponseWriter, r *http.Request) {
+func handleWriteBlock(w http.ResponseWriter, r *http.Request) {
     var m Message
 
     decoder := json.NewDecoder(r.Body)
