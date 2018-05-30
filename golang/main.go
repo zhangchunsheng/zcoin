@@ -110,6 +110,7 @@ func handleWriteBlock(w http.ResponseWriter, r *http.Request) {
     newBlock := generateBlock(Blockchain[len(Blockchain)-1], m.BPM)
     mutex.Unlock()
 
+    spew.Dump(newBlock)
     if isBlockValid(newBlock, Blockchain[len(Blockchain)-1]) {
         Blockchain = append(Blockchain, newBlock)
         spew.Dump(Blockchain)
