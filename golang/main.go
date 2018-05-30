@@ -23,6 +23,8 @@ type Block struct {
     PrevHash string
 } 
 
+var Blockchain []Block
+
 func calculateHash(block Block) string {
     record := string(block.Index) + block.Timestamp + string(block.BPM) + block.PrevHash
     h := sha256.New()
@@ -44,7 +46,7 @@ func generateBlock(oldBlock Block, BPM int) (Block, error) {
     return newBlock, nil
 }
 
-func isBlockValid() bool {
+func isBlockValid(newBlock, oldBlock Block) bool {
     if oldBlock.Index + 1 != newBlock.Index {
         return false;
     }
@@ -127,7 +129,7 @@ func handlerWriteBlock(w http.ResponseWriter, r *http.Request) {
     respondWithJSON(w, r, http.StatusCreated, newBlock)
 }
 
-func respondWidthJSON(w http.ResponseWriter, r *http.Request, code int, payload interface{}) {
+func respondWithJSON(w http.ResponseWriter, r *http.Request, code int, payload interface{}) {
     response, err := json.MarshalIntent(payload, "", "  ")
     if err != nil {
         w.WriteHeader(http.StatusInternalServerError)
