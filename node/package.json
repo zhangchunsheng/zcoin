@@ -1,0 +1,10 @@
+{
+  "name": "zcoin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "author": "zhangchunsheng",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1"
+  }
+}
