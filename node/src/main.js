@@ -58,3 +58,10 @@ console.log('Blockchain valid? ' + zCoin.isChainValid());
 zCoin.chain[1].data = { amount: 100 };
 
 console.log("Blockchain valid? " + zCoin.isChainValid());
+
+zCoin.chain[1].hash = zCoin.chain[1].calculateHash();
+zCoin.chain[2].previousHash = zCoin.chain[1].hash;
+zCoin.chain[2].hash = zCoin.chain[2].calculateHash();
+console.log("Blockchain valid? " + zCoin.isChainValid());
+
+console.log(JSON.stringify(zCoin, null, 4));
